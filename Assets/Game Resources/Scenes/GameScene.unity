@@ -1391,6 +1391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roateSpeed: 100
   rotateDirection: 1
+  moveSpeed: 5
 --- !u!4 &1942453906
 Transform:
   m_ObjectHideFlags: 0

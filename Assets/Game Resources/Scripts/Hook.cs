@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
-    public float roateSpeed;
+    public float rotateSpeed;
     public int rotateDirection;
     private bool isMoving;
+    public float moveSpeed;
+    private float moveTimer;
+    private bool isReturn;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -22,7 +23,14 @@ public class Hook : MonoBehaviour
         }
         if (isMoving)
         {
-
+            if (!isReturn)
+            {
+                HookMove();
+            }
+            else
+            {
+                HookReturn();
+            }
         }
         else
         {
@@ -40,11 +48,21 @@ public class Hook : MonoBehaviour
         {
             rotateDirection = 1;
         }
-        transform.Rotate(roateSpeed * Time.deltaTime * Vector3.forward * rotateDirection);
+        transform.Rotate(rotateSpeed * Time.deltaTime * Vector3.forward * rotateDirection);
     }
 
     private void HookMove()
     {
-        transform.Translate
+        transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+        moveTimer = moveTimer + Time.deltaTime;
+        if (moveTimer >= 2)
+        {
+            isReturn = true;
+        }
+    }
+
+    private void HookReturn()
+    {
+        throw new NotImplementedException();
     }
 }
