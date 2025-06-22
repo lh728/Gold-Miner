@@ -9,9 +9,12 @@ public class Hook : MonoBehaviour
     public float moveSpeed;
     private float moveTimer;
     private bool isReturn;
+    private Vector3 originalPosition;
+
     // Start is called before the first frame update
     void Start()
     {
+        originalPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -63,6 +66,12 @@ public class Hook : MonoBehaviour
 
     private void HookReturn()
     {
-        throw new NotImplementedException();
+        transform.position = Vector3.MoveTowards(transform.position,originalPosition,moveSpeed * Time.deltaTime);
+        if (transform.position.y >= originalPosition.y)
+        {
+            isMoving = false;
+            isReturn = false;
+            moveTimer = 0;
+        }
     }
 }
