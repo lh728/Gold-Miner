@@ -10,6 +10,7 @@ public class Hook : MonoBehaviour
     private float moveTimer;
     private bool isReturn;
     private Vector3 originalPosition;
+    public SpriteRenderer spriteRenderer;// rope
 
     // Start is called before the first frame update
     void Start()
@@ -62,11 +63,13 @@ public class Hook : MonoBehaviour
         {
             isReturn = true;
         }
+        spriteRenderer.size = new Vector2(spriteRenderer.size.x, spriteRenderer.size.y - moveSpeed * Time.deltaTime);
     }
 
     private void HookReturn()
     {
         transform.position = Vector3.MoveTowards(transform.position,originalPosition,moveSpeed * Time.deltaTime);
+        spriteRenderer.size = new Vector2(spriteRenderer.size.x, spriteRenderer.size.y + moveSpeed * Time.deltaTime);
         if (transform.position.y >= originalPosition.y)
         {
             isMoving = false;

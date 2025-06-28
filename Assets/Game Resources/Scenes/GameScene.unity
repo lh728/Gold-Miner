@@ -1392,6 +1392,7 @@ MonoBehaviour:
   rotateSpeed: 100
   rotateDirection: 1
   moveSpeed: 5
+  spriteRenderer: {fileID: 1826621606}
 --- !u!4 &1942453906
 Transform:
   m_ObjectHideFlags: 0
