@@ -77,4 +77,9 @@ public class Hook : MonoBehaviour
             moveTimer = 0;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
 }
